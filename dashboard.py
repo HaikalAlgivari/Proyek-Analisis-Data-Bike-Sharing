@@ -17,8 +17,8 @@ df_hour['dteday'] = pd.to_datetime(df_hour['dteday'])
 df_day.drop('instant', axis=1, inplace=True)
 df_hour.drop('instant', axis=1, inplace=True)
 
-# Function to create the boxplot for mnth and cnt
-def create_boxplot_mnth(df, title):
+# Function to create the lineplot for mnth and cnt
+def create_lineplot_mnth(df, title):
   plt.figure(figsize=(10, 6))
   sns.lineplot(x='mnth', y='cnt', data=df)
   plt.title(title)
