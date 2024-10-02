@@ -57,7 +57,7 @@ def create_boxplot_season(df, title):
   plt.title(title)
   plt.xlabel('Musim')
   plt.ylabel('Jumlah Penyewaan Sepeda')
-  sns.boxplot(x='season', y='cnt', data=df[df['season'] == 'Springer'], color='red')
+  sns.boxplot(x='season', y='cnt', data=df[df['season'] == '1'], color='red')
   return plt
 
 # Function to create the boxplot for yr and cnt
