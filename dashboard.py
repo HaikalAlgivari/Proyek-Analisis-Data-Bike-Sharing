@@ -6,8 +6,8 @@ from statsmodels.tsa.seasonal import seasonal_decompose
 import streamlit as st
 
 # Load data
-df_day = pd.read_csv('/content/day.csv')
-df_hour = pd.read_csv('/content/hour.csv')
+df_day = pd.read_csv('day.csv')
+df_hour = pd.read_csv('hour.csv')
 
 # Convert the 'dteday' column to datetime format
 df_day['dteday'] = pd.to_datetime(df_day['dteday'])
