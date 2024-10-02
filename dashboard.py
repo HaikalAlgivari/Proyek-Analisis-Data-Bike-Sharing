@@ -20,19 +20,34 @@ df_hour.drop('instant', axis=1, inplace=True)
 # Function to create the boxplot for mnth and cnt
 def create_boxplot_mnth(df, title):
   plt.figure(figsize=(10, 6))
-  sns.boxplot(x='mnth', y='cnt', data=df)
+  sns.lineplot(x='mnth', y='cnt', data=df)
   plt.title(title)
   plt.xlabel('Bulan')
   plt.ylabel('Jumlah Penyewaan Sepeda')
+
+  # Menandai area kenaikan dan penurunan
+  plt.axvspan(1, 4, color='salmon', alpha=0.3)  # Area penurunan
+  plt.axvspan(5, 9, color='lightgreen', alpha=0.3)  # Area kenaikan
+  plt.axvspan(10, 12, color='salmon', alpha=0.3)  # Area penurunan
+
   return plt
 
 # Function to create the boxplot for hr and cnt
 def create_boxplot_hr(df, title):
   plt.figure(figsize=(10, 6))
+  plt.figure(figsize=(10, 6))
   sns.boxplot(x='hr', y='cnt', data=df)
   plt.title(title)
   plt.xlabel('Jam')
   plt.ylabel('Jumlah Penyewaan Sepeda')
+
+  # Menandai jam 8 dan jam 17-18
+  plt.axvspan(7.5, 8.5, color='lightgreen', alpha=0.3)  # Menandai jam 8
+  plt.axvspan(16.5, 18.5, color='lightgreen', alpha=0.3)  # Menandai jam 17-18
+
+  # Menandai jam 0-5
+  plt.axvspan(-0.5, 5.5, color='salmon', alpha=0.3)  # Menandai jam 0-5
+
   return plt
 
 # Function to create the boxplot for season and cnt
@@ -42,6 +57,7 @@ def create_boxplot_season(df, title):
   plt.title(title)
   plt.xlabel('Musim')
   plt.ylabel('Jumlah Penyewaan Sepeda')
+  sns.boxplot(x='season', y='cnt', data=df_day[df_day['season'] == 1], color='red')
   return plt
 
 # Function to create the boxplot for yr and cnt
@@ -56,21 +72,26 @@ def create_boxplot_yr(df, title):
 
 # Function to create the lineplot for dteday and cnt
 def create_lineplot_dteday(df, title):
-    plt.figure(figsize=(15, 6))
-    sns.lineplot(x='dteday', y='cnt', data=df)
-    plt.title(title)
-    plt.xlabel('Tanggal')
-    plt.ylabel('Jumlah Penyewaan Sepeda')
-    plt.xticks(rotation=45)
-    return plt
+  plt.figure(figsize=(15, 6))
+  sns.lineplot(x='dteday', y='cnt', data=df)
+  plt.title(title)
+  plt.xlabel('Tanggal')
+  plt.ylabel('Jumlah Penyewaan Sepeda')
+  plt.xticks(rotation=45)
 
-def create_lineplot_mnth(df, title):
-    plt.figure(figsize=(12, 6))
-    sns.lineplot(x='mnth', y='cnt', data=df)
-    plt.title(title)
-    plt.xlabel('Bulan')
-    plt.ylabel('Jumlah Penyewaan Sepeda')
-    return plt
+  # Peningkatan Pertama
+  plt.axvspan('2011-01-01', '2011-07-03', color='lightgreen', alpha=0.3)
+
+  # Penurunan Pertama
+  plt.axvspan('2011-07-04', '2011-12-24', color='salmon', alpha=0.3)
+
+  # Peningkatan Kedua
+  plt.axvspan('2011-12-25', '2012-09-14', color='lightgreen', alpha=0.3)
+
+  # Penurunan Kedua
+  plt.axvspan('2012-09-15', '2012-12-31', color='salmon', alpha=0.3)
+  
+  return plt
 
 # Function to create the heatmap for correlation
 def create_heatmap_correlation(df, title):
