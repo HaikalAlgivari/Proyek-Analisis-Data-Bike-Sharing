@@ -17,6 +17,14 @@ df_hour['dteday'] = pd.to_datetime(df_hour['dteday'])
 df_day.drop('instant', axis=1, inplace=True)
 df_hour.drop('instant', axis=1, inplace=True)
 
+# Change the 'season' column into object data type
+df_day['season'] = df_day['season'].map({1: 'Springer', 2: 'Summer', 3: 'Fall', 4: 'Winter'})
+df_hour['season'] = df_hour['season'].map({1: 'Springer', 2: 'Summer', 3: 'Fall', 4: 'Winter'})
+
+# Change the 'yr' column into object data type
+df_day['yr'] = df_day['yr'].map({0: 2011, 1: 2012})
+df_hour['yr'] = df_hour['yr'].map({0: 2011, 1: 2012})
+
 # Function to create the lineplot for mnth and cnt
 def create_lineplot_mnth(df, title):
   plt.figure(figsize=(10, 6))
