@@ -120,14 +120,6 @@ selected_tab = st.sidebar.radio('Select Tab', ['Visualisasi & Analisis Deskripti
 
 # Visualisasi & Analisis Deskriptif
 if selected_tab == 'Visualisasi & Analisis Deskriptif':
-    # Change the 'season' column into object data type
-    df_day['season'] = df_day['season'].map({1: 'Springer', 2: 'Summer', 3: 'Fall', 4: 'Winter'})
-    df_hour['season'] = df_hour['season'].map({1: 'Springer', 2: 'Summer', 3: 'Fall', 4: 'Winter'})
-    
-    # Change the 'yr' column into object data type
-    df_day['yr'] = df_day['yr'].map({0: 2011, 1: 2012})
-    df_hour['yr'] = df_hour['yr'].map({0: 2011, 1: 2012})
-  
     st.header('Visualisasi & Analisis Deskriptif')
 
     st.subheader('Distribusi Jumlah Penyewaan Sepeda terhadap Waktu')
@@ -151,14 +143,6 @@ if selected_tab == 'Visualisasi & Analisis Deskriptif':
 
 # Analisis Lanjutan
 elif selected_tab == 'Analisis Lanjutan':
-    # Change the 'season' column into int data type
-    df_day['season'] = df_day['season'].map({'Springer': 1, 'Summer': 2, 'Fall': 3, 'Winter': 4})
-    df_hour['season'] = df_hour['season'].map({'Springer': 1, 'Summer': 2, 'Fall': 3, 'Winter': 4})
-
-    # Change the 'yr' column into int data type
-    df_day['yr'] = df_day['yr'].map({2011: 0, 2012: 1})
-    df_hour['yr'] = df_hour['yr'].map({2011: 0, 2012: 1})
-
     st.header('Analisis Lanjutan')
 
     st.subheader('Analisis Korelasi')
